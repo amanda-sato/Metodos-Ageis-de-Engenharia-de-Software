@@ -8,7 +8,8 @@ def somar(numeros):
     for parte in numeros.split(","):
         if int(parte) < 0:
             negativos.append(parte)
-        total += int(parte)
+        if int(parte) <= 1000:
+            total += int(parte)
     if negativos:
         raise ValueError("negativos não são permitidos: " + ",".join(negativos))
     return total
