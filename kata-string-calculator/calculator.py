@@ -2,7 +2,9 @@ def somar(numeros):
     if numeros == "":
         return 0
     if numeros.startswith("//"):
-        numeros = numeros[4:].replace(numeros[2], ",")
+        cabecalho, numeros = numeros[2:].split("\n", 1)
+        for separador in cabecalho.strip("[]").split("]["):
+            numeros = numeros.replace(separador, ",")
     total = 0
     negativos = []
     for parte in numeros.split(","):
