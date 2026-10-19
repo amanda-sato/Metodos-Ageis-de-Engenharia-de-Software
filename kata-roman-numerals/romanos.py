@@ -1,2 +1,2 @@
 def para_romano(numero):
-    return "I"
+    return "I" * numero
