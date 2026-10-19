@@ -12,4 +12,7 @@ def test_para_romano_3():
 
 def test_para_romano_5():
     assert para_romano(5) == "V"
+
+def test_para_romano_6():
+    assert para_romano(6) == "VI"
     
