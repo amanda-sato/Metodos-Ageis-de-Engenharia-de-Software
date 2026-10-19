@@ -1,9 +1,8 @@
 def para_romano(numero):
-    if numero == 4:
-        return "IV"
-    elif numero < 5:
-        return "I" * numero
-    elif numero < 9:
-        return "V" + "I" * (numero - 5)
-    elif numero == 10:
-        return "X"
+    numeros_romano = [(10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
+    resultado = ""
+    for valor, numero_romano in numeros_romano:
+        while numero >= valor:
+            resultado += numero_romano  
+            numero -= valor
+    return resultado

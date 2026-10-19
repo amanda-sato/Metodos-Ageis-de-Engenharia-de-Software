@@ -21,3 +21,6 @@ def test_para_romano_10():
 
 def test_para_romano_4():
     assert para_romano(4) == "IV"
+
+def test_para_romano_9():
+    assert para_romano(9) == "IX"
