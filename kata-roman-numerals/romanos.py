@@ -1,5 +1,7 @@
 def para_romano(numero):
-    if numero < 5:
+    if numero == 4:
+        return "IV"
+    elif numero < 5:
         return "I" * numero
     elif numero < 9:
         return "V" + "I" * (numero - 5)
