@@ -24,3 +24,6 @@ def test_para_romano_4():
 
 def test_para_romano_9():
     assert para_romano(9) == "IX"
+
+def test_para_romano_1994():    
+    assert para_romano(1994) == "MCMXCIV"
