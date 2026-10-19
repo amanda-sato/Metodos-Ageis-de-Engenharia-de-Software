@@ -31,3 +31,6 @@ def test_para_romano_1994():
 def test_para_romano_2026():    
     assert para_romano(2026) == "MMXXVI"
 
+def test_para_romano_3999():
+    assert para_romano(3999) == "MMMCMXCIX"
+
