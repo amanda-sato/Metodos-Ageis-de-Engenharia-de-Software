@@ -13,3 +13,15 @@ def para_romano(numero):
             resultado += numero_romano
             numero -= valor
     return resultado
+
+
+def para_inteiro(numeral):
+    valores = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    total = 0
+    for i, letra in enumerate(numeral):
+        valor = valores[letra]
+        if i + 1 < len(numeral) and valor < valores[numeral[i + 1]]:
+            total -= valor
+        else:
+            total += valor
+    return total
