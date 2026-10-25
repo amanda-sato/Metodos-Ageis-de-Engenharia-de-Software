@@ -34,3 +34,10 @@ def test_para_romano_2026():
 def test_para_romano_3999():
     assert para_romano(3999) == "MMMCMXCIX"
 
+def test_para_romano_0():
+    with pytest.raises(ValueError):
+        para_romano(0)
+
+def test_para_romano_4000():
+    with pytest.raises(ValueError, match="O número tem de estar entre 1 e 3999"):
+        para_romano(4000)
