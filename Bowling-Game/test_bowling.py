@@ -1,6 +1,11 @@
 import pytest
-from bowling import pontuacao
+from bowling import Jogo
 
+def pontuacao(lancamentos):
+    jogo = Jogo()
+    for pinos in lancamentos:
+        jogo.lancar(pinos)
+    return jogo.pontuacao()
 
 def test_so_zeros():
     lancamentos = [0] * 20
