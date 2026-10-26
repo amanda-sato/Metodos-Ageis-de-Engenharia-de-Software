@@ -1,2 +1,2 @@
 def pontuacao(lancamentos):
-    return 0;
+    return sum(lancamentos);
