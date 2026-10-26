@@ -9,3 +9,7 @@ def test_so_zeros():
 def test_jogada_normal():
     lancamentos = [3, 3] + [0] * 18
     assert pontuacao(lancamentos) == 6
+
+def test_spare():
+    lancamentos = [5, 5, 4] + [0] * 17
+    assert pontuacao(lancamentos) == 18
