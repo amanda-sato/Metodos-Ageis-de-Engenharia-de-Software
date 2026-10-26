@@ -17,3 +17,8 @@ def test_spare():
 def test_strike():
     lancamentos = [10, 3, 4] + [0] * 16
     assert pontuacao(lancamentos) == 24
+
+def test_strikes_seguidos():
+    lancamentos = [10, 10, 7, 1] + [0] * 14
+    assert pontuacao(lancamentos) == 53
+
