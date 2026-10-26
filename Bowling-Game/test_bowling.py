@@ -29,3 +29,7 @@ def test_spare_na_decima_jogada():
 def test_strike_na_decima_jogada():
     lancamentos = [0] * 18 + [10, 3, 2]
     assert pontuacao(lancamentos) == 15
+
+def test_jogo_perfeito():
+    lancamentos = [10] * 12
+    assert pontuacao(lancamentos) == 300
