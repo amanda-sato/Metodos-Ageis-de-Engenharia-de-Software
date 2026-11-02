@@ -68,3 +68,18 @@ def test_reservar_mais_de_sete_dias_e_recusado_com_indicacao_do_limite():
         inventario.reservar(camera, date(2026, 11, 10), date(2026, 11, 18))
 
     assert inventario.reservas == []
+
+
+# H03
+
+def test_reserva_sobreposta_e_recusada_com_data_livre_seguinte():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+    inventario.reservar(camera, date(2026, 10, 5), date(2026, 10, 8))
+
+    with pytest.raises(ReservaRecusada) as erro:
+        inventario.reservar(camera, date(2026, 10, 7), date(2026, 10, 10))
+
+    assert erro.value.data_livre_seguinte == date(2026, 10, 9)
+    assert len(inventario.reservas) == 1
