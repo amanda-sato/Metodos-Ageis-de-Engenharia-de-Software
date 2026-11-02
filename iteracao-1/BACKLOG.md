@@ -101,7 +101,7 @@ disponível quando preciso dele.
 **Como** técnico do laboratório, **quero** que o sistema recuse reservas sobrepostas, **para**
 não prometer o mesmo equipamento a duas pessoas.
 
-- **Pontos:** 5 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** Em curso
+- **Pontos:** 5 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** Pronto
 
 **Critérios de aceitação**
 
