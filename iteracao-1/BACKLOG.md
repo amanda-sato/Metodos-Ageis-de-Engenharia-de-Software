@@ -86,7 +86,7 @@ posso requisitar.
 **Como** estudante, **quero** reservar um item entre duas datas, **para** garantir que está
 disponível quando preciso dele.
 
-- **Pontos:** 3 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** por fazer
+- **Pontos:** 3 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** Pronto
 
 **Critérios de aceitação**
 
@@ -101,7 +101,7 @@ disponível quando preciso dele.
 **Como** técnico do laboratório, **quero** que o sistema recuse reservas sobrepostas, **para**
 não prometer o mesmo equipamento a duas pessoas.
 
-- **Pontos:** 5 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** por fazer
+- **Pontos:** 5 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** Em curso
 
 **Critérios de aceitação**
 
