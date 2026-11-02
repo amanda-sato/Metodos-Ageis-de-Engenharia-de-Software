@@ -32,6 +32,8 @@ class Inventario:
     def reservar(self, item, inicio, fim):
         if item.em_manutencao:
             raise ReservaRecusada("O item está em manutenção.")
+        if (fim - inicio).days > 7:
+            raise ReservaRecusada("O empréstimo não pode ter mais de 7 dias corridos.")
         reserva = Reserva(item, inicio, fim)
         self.reservas.append(reserva)
         return reserva
