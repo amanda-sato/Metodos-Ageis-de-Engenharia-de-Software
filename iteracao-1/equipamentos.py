@@ -26,7 +26,9 @@ class Inventario:
         self.itens.append(item)
 
     def reservar(self, item, inicio, fim):
-        pass
+        reserva = Reserva(item, inicio, fim)
+        self.reservas.append(reserva)
+        return reserva
 
     def consultar_lista(self):
         if not self.itens:
