@@ -1,7 +1,14 @@
 class Item:
-    def __init__(self, nome, tipo):
+    def __init__(self, nome, tipo, em_manutencao=False):
         self.nome = nome
         self.tipo = tipo
+        self.em_manutencao = em_manutencao
+
+    @property
+    def estado(self):
+        if self.em_manutencao:
+            return "indisponível"
+        return "disponível"
 
 
 class ResultadoBuscaLista:
