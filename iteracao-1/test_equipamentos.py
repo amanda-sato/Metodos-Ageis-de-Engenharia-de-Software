@@ -83,3 +83,13 @@ def test_reserva_sobreposta_e_recusada_com_data_livre_seguinte():
 
     assert erro.value.data_livre_seguinte == date(2026, 10, 9)
     assert len(inventario.reservas) == 1
+
+def test_reserva_a_partir_do_dia_seguinte_ao_fim_e_aceite(): # passou de primeira
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+    inventario.reservar(camera, date(2026, 10, 5), date(2026, 10, 8))
+
+    inventario.reservar(camera, date(2026, 10, 9), date(2026, 10, 12))
+
+    assert len(inventario.reservas) == 2
