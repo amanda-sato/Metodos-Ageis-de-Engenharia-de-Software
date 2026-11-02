@@ -20,11 +20,21 @@ class ResultadoBuscaLista:
 class Inventario:
     def __init__(self):
         self.itens = []
+        self.reservas = []
 
     def registrar(self, item):
         self.itens.append(item)
+
+    def reservar(self, item, inicio, fim):
+        pass
 
     def consultar_lista(self):
         if not self.itens:
             return ResultadoBuscaLista([], "Não há equipamentos registrados.")
         return ResultadoBuscaLista(list(self.itens), None)
+
+class Reserva:
+    def __init__(self, item, inicio, fim):
+        self.item = item
+        self.inicio = inicio
+        self.fim = fim
