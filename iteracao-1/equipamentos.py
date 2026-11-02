@@ -20,4 +20,4 @@ class Inventario:
     def consultar_lista(self):
         if not self.itens:
             return ResultadoBuscaLista([], "Não há equipamentos registrados.")
-        return ResultadoBuscaLista(self.itens, None)
+        return ResultadoBuscaLista(list(self.itens), None)
