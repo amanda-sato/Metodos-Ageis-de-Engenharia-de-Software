@@ -19,6 +19,20 @@ class Item:
             return "indisponível"
         return "disponível"
 
+    @property
+    def itens(self):
+        return [self]
+
+
+class Kit:
+    def __init__(self, nome, itens):
+        self.nome = nome
+        self.itens = itens
+
+    @property
+    def em_manutencao(self):
+        return any(item.em_manutencao for item in self.itens)
+
 
 class ResultadoBuscaLista:
     def __init__(self, itens, mensagem):
@@ -40,7 +54,8 @@ class Inventario:
         if (fim - inicio).days > 7:
             raise ReservaRecusada("O empréstimo não pode ter mais de 7 dias corridos.")
         for existente in self.reservas:
-            if existente.item is item and inicio <= existente.fim and fim >= existente.inicio:
+            partilham_itens = any(i in existente.item.itens for i in item.itens)
+            if partilham_itens and inicio <= existente.fim and fim >= existente.inicio:
                 data_livre = existente.fim + timedelta(days=1)
                 raise ReservaRecusada(
                     f"O item já está reservado nessas datas. Fica livre a {data_livre:%d/%m/%Y}.",
@@ -61,12 +76,3 @@ class Reserva:
         self.item = item
         self.inicio = inicio
         self.fim = fim
-
-class Kit:
-    def __init__(self, nome, itens):
-        self.nome = nome
-        self.itens = itens
-
-    @property
-    def em_manutencao(self):
-        return any(item.em_manutencao for item in self.itens)
