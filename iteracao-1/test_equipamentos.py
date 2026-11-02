@@ -58,3 +58,13 @@ def test_reservar_item_em_manutencao_e_recusado():
         inventario.reservar(camera, date(2026, 10, 5), date(2026, 10, 8))
 
     assert inventario.reservas == []
+
+def test_reservar_mais_de_sete_dias_e_recusado_com_indicacao_do_limite():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+
+    with pytest.raises(ReservaRecusada, match="7 dias"):
+        inventario.reservar(camera, date(2026, 11, 10), date(2026, 11, 18))
+
+    assert inventario.reservas == []
