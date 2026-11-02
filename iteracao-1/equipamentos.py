@@ -2,6 +2,8 @@ class Item:
     def __init__(self, nome, tipo):
         self.nome = nome
         self.tipo = tipo
+
+
 class ResultadoBuscaLista:
     def __init__(self, itens, mensagem):
         self.itens = itens
@@ -9,10 +11,13 @@ class ResultadoBuscaLista:
 
 
 class Inventario:
+    def __init__(self):
+        self.itens = []
+
     def registrar(self, item):
-        pass
+        self.itens.append(item)
 
     def consultar_lista(self):
-        return ResultadoBuscaLista([], "Não há equipamentos registrados.")
-
-
+        if not self.itens:
+            return ResultadoBuscaLista([], "Não há equipamentos registrados.")
+        return ResultadoBuscaLista(self.itens, None)

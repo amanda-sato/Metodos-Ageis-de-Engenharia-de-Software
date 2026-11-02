@@ -16,4 +16,4 @@ def test_lista_nome_e_tipo_de_cada_item():
     resultado = inventario.consultar_lista()
 
     nomes_e_tipos = [(item.nome, item.tipo) for item in resultado.itens]
-    assert nomes_e_tipos == [("Câmera Digital", "câmera"), ("Tripé grande", "tripé")]
+    assert nomes_e_tipos == [("Câmera Digital", "câmera"), ("Tripé grande", "tripé"), ("Câmera Kodak", "câmera")]
