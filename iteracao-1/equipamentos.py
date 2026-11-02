@@ -1,3 +1,7 @@
+class ReservaRecusada(Exception):
+    pass
+
+
 class Item:
     def __init__(self, nome, tipo, em_manutencao=False):
         self.nome = nome
@@ -34,6 +38,7 @@ class Inventario:
         if not self.itens:
             return ResultadoBuscaLista([], "Não há equipamentos registrados.")
         return ResultadoBuscaLista(list(self.itens), None)
+
 
 class Reserva:
     def __init__(self, item, inicio, fim):

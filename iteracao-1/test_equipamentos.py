@@ -1,5 +1,6 @@
 from datetime import date
-from equipamentos import Inventario, Item
+import pytest
+from equipamentos import Inventario, Item, ReservaRecusada
 
 #H01
 
@@ -46,3 +47,14 @@ def test_reservar_item_disponivel_regista_reserva_com_as_datas():
 
     reservas = [(r.item.nome, r.inicio, r.fim) for r in inventario.reservas]
     assert reservas == [("Câmera Digital", date(2026, 10, 5), date(2026, 10, 8))]
+
+
+def test_reservar_item_em_manutencao_e_recusado():
+    inventario = Inventario()
+    camera = Item("Câmera Kodak", "câmera", em_manutencao=True)
+    inventario.registrar(camera)
+
+    with pytest.raises(ReservaRecusada):
+        inventario.reservar(camera, date(2026, 10, 5), date(2026, 10, 8))
+
+    assert inventario.reservas == []
