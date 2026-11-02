@@ -1,5 +1,10 @@
+from datetime import timedelta
+
+
 class ReservaRecusada(Exception):
-    pass
+    def __init__(self, mensagem, data_livre_seguinte=None):
+        super().__init__(mensagem)
+        self.data_livre_seguinte = data_livre_seguinte
 
 
 class Item:
@@ -34,6 +39,13 @@ class Inventario:
             raise ReservaRecusada("O item está em manutenção.")
         if (fim - inicio).days > 7:
             raise ReservaRecusada("O empréstimo não pode ter mais de 7 dias corridos.")
+        for existente in self.reservas:
+            if existente.item is item and inicio <= existente.fim and fim >= existente.inicio:
+                data_livre = existente.fim + timedelta(days=1)
+                raise ReservaRecusada(
+                    f"O item já está reservado nessas datas. Fica livre a {data_livre:%d/%m/%Y}.",
+                    data_livre_seguinte=data_livre,
+                )
         reserva = Reserva(item, inicio, fim)
         self.reservas.append(reserva)
         return reserva
