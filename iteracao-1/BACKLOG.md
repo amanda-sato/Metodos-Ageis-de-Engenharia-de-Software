@@ -71,7 +71,7 @@ Estado: `por fazer` · `em curso` · `pronto` · `aceite`
 **Como** estudante, **quero** ver a lista do equipamento do laboratório, **para** saber o que
 posso requisitar.
 
-- **Pontos:** 2 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** por fazer
+- **Pontos:** 2 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** Pronto
 
 **Critérios de aceitação**
 
