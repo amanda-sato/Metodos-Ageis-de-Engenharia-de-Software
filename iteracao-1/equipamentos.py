@@ -30,6 +30,8 @@ class Inventario:
         self.itens.append(item)
 
     def reservar(self, item, inicio, fim):
+        if item.em_manutencao:
+            raise ReservaRecusada("O item está em manutenção.")
         reserva = Reserva(item, inicio, fim)
         self.reservas.append(reserva)
         return reserva
