@@ -1,6 +1,6 @@
 from datetime import date
 import pytest
-from equipamentos import Inventario, Item, ReservaRecusada
+from equipamentos import Inventario, Item, ReservaRecusada, Kit
 
 #H01
 
@@ -93,3 +93,18 @@ def test_reserva_a_partir_do_dia_seguinte_ao_fim_e_aceite(): # passou de primeir
     inventario.reservar(camera, date(2026, 10, 9), date(2026, 10, 12))
 
     assert len(inventario.reservas) == 2
+
+
+def test_reservar_item_de_kit_reservado_e_recusado():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    tripe = Item("Tripé grande", "tripé")
+    inventario.registrar(camera)
+    inventario.registrar(tripe)
+    kit = Kit("Kit vídeo", [camera, tripe])
+    inventario.reservar(kit, date(2026, 10, 5), date(2026, 10, 8))
+
+    with pytest.raises(ReservaRecusada):
+        inventario.reservar(camera, date(2026, 10, 5), date(2026, 10, 8))
+
+    assert len(inventario.reservas) == 1

@@ -61,3 +61,12 @@ class Reserva:
         self.item = item
         self.inicio = inicio
         self.fim = fim
+
+class Kit:
+    def __init__(self, nome, itens):
+        self.nome = nome
+        self.itens = itens
+
+    @property
+    def em_manutencao(self):
+        return any(item.em_manutencao for item in self.itens)
