@@ -108,3 +108,15 @@ def test_reservar_item_de_kit_reservado_e_recusado():
         inventario.reservar(camera, date(2026, 10, 5), date(2026, 10, 8))
 
     assert len(inventario.reservas) == 1
+
+
+# H05
+
+def test_reserva_de_sete_dias_e_aceite_com_devolucao_no_ultimo_dia():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+
+    reserva = inventario.reservar(camera, date(2026, 11, 10), date(2026, 11, 17))
+
+    assert reserva.devolucao == date(2026, 11, 17)

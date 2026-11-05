@@ -76,3 +76,4 @@ class Reserva:
         self.item = item
         self.inicio = inicio
         self.fim = fim
+        self.devolucao = None
