@@ -130,3 +130,14 @@ def test_devolucao_em_feriado_passa_para_o_dia_util_seguinte():
     reserva = inventario.reservar(camera, date(2026, 11, 24), date(2026, 12, 1))
 
     assert reserva.devolucao == date(2026, 12, 2)
+
+# H07
+
+def test_estudante_reserva_item_disponivel_e_fica_em_espera():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+
+    inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
+
+    assert inventario.estado_em(camera, date(2026, 11, 21)) == "em espera"
