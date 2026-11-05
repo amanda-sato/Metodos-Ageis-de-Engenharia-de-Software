@@ -120,3 +120,13 @@ def test_reserva_de_sete_dias_e_aceite_com_devolucao_no_ultimo_dia():
     reserva = inventario.reservar(camera, date(2026, 11, 10), date(2026, 11, 17))
 
     assert reserva.devolucao == date(2026, 11, 17)
+
+
+def test_devolucao_em_feriado_passa_para_o_dia_util_seguinte():
+    inventario = Inventario(feriados=[date(2026, 12, 1)])
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+
+    reserva = inventario.reservar(camera, date(2026, 11, 24), date(2026, 12, 1))
+
+    assert reserva.devolucao == date(2026, 12, 2)
