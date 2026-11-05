@@ -134,7 +134,7 @@ kit, **para** saber o que posso emprestar sem folhear o caderno.
 seja de sete dias corridos e que, se terminar num feriado, passe para o dia útil seguinte,
 **para** evitar empréstimos muito longos que atrapalhem outros utilizadores.
 
-- **Pontos:** 3 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** por fazer
+- **Pontos:** 3 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** Pronto
 
 **Critérios de aceitação**
 
