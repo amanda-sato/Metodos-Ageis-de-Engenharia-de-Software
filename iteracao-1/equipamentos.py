@@ -41,14 +41,15 @@ class ResultadoBuscaLista:
 
 
 class Inventario:
-    def __init__(self):
+    def __init__(self, feriados=None):
         self.itens = []
         self.reservas = []
+        self.feriados = feriados or []
 
     def registrar(self, item):
         self.itens.append(item)
 
-    def reservar(self, item, inicio, fim):
+    def reservar(self, item, inicio, fim, perfil="estudante"):
         if item.em_manutencao:
             raise ReservaRecusada("O item está em manutenção.")
         if (fim - inicio).days > 7:
@@ -61,9 +62,18 @@ class Inventario:
                     f"O item já está reservado nessas datas. Fica livre a {data_livre:%d/%m/%Y}.",
                     data_livre_seguinte=data_livre,
                 )
-        reserva = Reserva(item, inicio, fim)
+        reserva = Reserva(item, inicio, fim, self.dia_de_devolucao(fim))
         self.reservas.append(reserva)
         return reserva
+
+    def dia_de_devolucao(self, fim):
+        devolucao = fim
+        while devolucao in self.feriados:
+            devolucao += timedelta(days=1)
+        return devolucao
+
+    def estado_em(self, item, data):
+        return "disponível"
 
     def consultar_lista(self):
         if not self.itens:
@@ -72,8 +82,8 @@ class Inventario:
 
 
 class Reserva:
-    def __init__(self, item, inicio, fim):
+    def __init__(self, item, inicio, fim, devolucao):
         self.item = item
         self.inicio = inicio
         self.fim = fim
-        self.devolucao = fim
+        self.devolucao = devolucao
