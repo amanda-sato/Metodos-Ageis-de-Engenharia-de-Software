@@ -73,6 +73,9 @@ class Inventario:
         return devolucao
 
     def estado_em(self, item, data):
+        for reserva in self.reservas:
+            if item in reserva.item.itens and reserva.inicio <= data <= reserva.fim:
+                return "em espera"
         return "disponível"
 
     def consultar_lista(self):
