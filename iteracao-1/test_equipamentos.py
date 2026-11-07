@@ -241,3 +241,15 @@ def test_detalhes_do_item_mostram_a_localizacao():
 
     assert detalhes.localizacao == "Armário 2, prateleira 1"
 
+def test_kits_possiveis_com_dois_de_cada_e_dois():
+    inventario = Inventario()
+    for nome, tipo in [
+        ("Câmera 1", "câmera"), ("Câmera 2", "câmera"),
+        ("Tripé 1", "tripé"), ("Tripé 2", "tripé"),
+        ("Microfone 1", "microfone"), ("Microfone 2", "microfone"),
+    ]:
+        inventario.registrar(Item(nome, tipo))
+
+    kits = inventario.kits_possiveis_em(date(2026, 11, 21), ["câmera", "tripé", "microfone"])
+
+    assert kits == 2

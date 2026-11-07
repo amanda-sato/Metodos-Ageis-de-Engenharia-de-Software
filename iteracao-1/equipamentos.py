@@ -108,6 +108,16 @@ class Inventario:
     def consultar_detalhes(self, item):
         return item
 
+    def kits_possiveis_em(self, data, composicao, hoje=None):
+        disponiveis = [
+            item for item, estado in self.consultar_equipamento_em(data, hoje)
+            if estado == "disponível"
+        ]
+        return min(
+            len([item for item in disponiveis if item.tipo == tipo])
+            for tipo in composicao
+        )
+
     def consultar_lista(self):
         if not self.itens:
             return ResultadoBuscaLista([], "Não há equipamentos registrados.")
