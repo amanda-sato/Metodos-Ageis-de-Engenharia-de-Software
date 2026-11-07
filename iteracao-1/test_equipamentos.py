@@ -141,3 +141,14 @@ def test_estudante_reserva_item_disponivel_e_fica_em_espera():
     inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
 
     assert inventario.estado_em(camera, date(2026, 11, 21)) == "em espera"
+
+def test_item_em_espera_nao_pode_ser_reservado_por_outro_estudante():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+    inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
+
+    with pytest.raises(ReservaRecusada):
+        inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
+
+    assert len(inventario.reservas) == 1
