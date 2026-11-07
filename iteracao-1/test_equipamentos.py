@@ -253,3 +253,19 @@ def test_kits_possiveis_com_dois_de_cada_e_dois():
     kits = inventario.kits_possiveis_em(date(2026, 11, 21), ["câmera", "tripé", "microfone"])
 
     assert kits == 2
+
+def test_sem_microfone_disponivel_nao_e_possivel_formar_kits():
+    inventario = Inventario()
+    camera = Item("Câmera 1", "câmera")
+    tripe = Item("Tripé 1", "tripé")
+    microfone = Item("Microfone 1", "microfone")
+    for item in [camera, tripe, microfone]:
+        inventario.registrar(item)
+    inventario.reservar(
+        microfone, date(2026, 11, 20), date(2026, 11, 22),
+        perfil="docente", hoje=date(2026, 11, 10),
+    )
+
+    kits = inventario.kits_possiveis_em(date(2026, 11, 21), ["câmera", "tripé", "microfone"])
+
+    assert kits == 0
