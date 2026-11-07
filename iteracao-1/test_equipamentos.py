@@ -232,3 +232,12 @@ def test_item_em_manutencao_aparece_indisponivel_na_consulta_por_data():
         ("Câmera Kodak", "indisponível"),
     ]
 
+def test_detalhes_do_item_mostram_a_localizacao():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera", localizacao="Armário 2, prateleira 1")
+    inventario.registrar(camera)
+
+    detalhes = inventario.consultar_detalhes(camera)
+
+    assert detalhes.localizacao == "Armário 2, prateleira 1"
+
