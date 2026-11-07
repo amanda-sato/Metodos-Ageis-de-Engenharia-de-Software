@@ -99,6 +99,9 @@ class Inventario:
                 return "em espera"
         return "disponível"
 
+    def consultar_equipamento_em(self, data, hoje=None):
+        return []
+
     def consultar_lista(self):
         if not self.itens:
             return ResultadoBuscaLista([], "Não há equipamentos registrados.")

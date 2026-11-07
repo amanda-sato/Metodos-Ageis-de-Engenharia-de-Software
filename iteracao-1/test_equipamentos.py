@@ -203,3 +203,20 @@ def test_docente_reserva_item_disponivel_e_fica_indisponivel():
     )
 
     assert inventario.estado_em(camera, date(2026, 11, 21)) == "indisponível"
+
+# H04
+
+def test_consultar_equipamento_numa_data_mostra_estado_de_cada_item():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    tripe = Item("Tripé grande", "tripé")
+    inventario.registrar(camera)
+    inventario.registrar(tripe)
+    inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
+
+    estados = inventario.consultar_equipamento_em(date(2026, 11, 21))
+
+    assert [(item.nome, estado) for item, estado in estados] == [
+        ("Câmera Digital", "em espera"),
+        ("Tripé grande", "disponível"),
+    ]
