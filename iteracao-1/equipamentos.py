@@ -8,10 +8,11 @@ class ReservaRecusada(Exception):
 
 
 class Item:
-    def __init__(self, nome, tipo, em_manutencao=False):
+    def __init__(self, nome, tipo, em_manutencao=False, localizacao=None):
         self.nome = nome
         self.tipo = tipo
         self.em_manutencao = em_manutencao
+        self.localizacao = localizacao
 
     @property
     def estado(self):
@@ -103,6 +104,9 @@ class Inventario:
 
     def consultar_equipamento_em(self, data, hoje=None):
         return [(item, self.estado_em(item, data, hoje)) for item in self.itens]
+
+    def consultar_detalhes(self, item):
+        return item
 
     def consultar_lista(self):
         if not self.itens:
