@@ -181,3 +181,13 @@ def test_docente_nao_pode_reservar_item_em_espera_a_menos_de_48_horas():
         )
 
     assert [r.perfil for r in inventario.reservas] == ["estudante"]
+
+def test_item_em_espera_passa_a_indisponivel_a_48_horas_do_inicio():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+    inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
+
+    estado = inventario.estado_em(camera, date(2026, 11, 21), hoje=date(2026, 11, 18))
+
+    assert estado == "indisponível"

@@ -86,7 +86,7 @@ class Inventario:
             devolucao += timedelta(days=1)
         return devolucao
 
-    def estado_em(self, item, data):
+    def estado_em(self, item, data, hoje=None):
         for reserva in self.reservas:
             if item in reserva.item.itens and reserva.inicio <= data <= reserva.fim:
                 if reserva.perfil == "docente":
