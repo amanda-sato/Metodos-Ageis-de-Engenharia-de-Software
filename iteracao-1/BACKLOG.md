@@ -117,7 +117,7 @@ não prometer o mesmo equipamento a duas pessoas.
 "disponíveis" e "em espera", a sua localização e se tenho quantidade suficiente para formar um
 kit, **para** saber o que posso emprestar sem folhear o caderno.
 
-- **Pontos:** 5 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** por fazer
+- **Pontos:** 5 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** pronto
 
 **Critérios de aceitação**
 
@@ -167,7 +167,7 @@ reservado por um docente até 48 horas antes da data da reserva, passando depois
 "indisponível", e que os docentes possam reservar itens "disponíveis" e "em espera", **para**
 que não haja conflitos de empréstimo de equipamento.
 
-- **Pontos:** 8 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** por fazer
+- **Pontos:** 8 · **Prioridade:** 1 · **Iteração:** 1 · **Estado:** pronto
 
 **Critérios de aceitação**
 
