@@ -100,7 +100,7 @@ class Inventario:
         return "disponível"
 
     def consultar_equipamento_em(self, data, hoje=None):
-        return []
+        return [(item, self.estado_em(item, data, hoje)) for item in self.itens]
 
     def consultar_lista(self):
         if not self.itens:
