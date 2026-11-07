@@ -191,3 +191,15 @@ def test_item_em_espera_passa_a_indisponivel_a_48_horas_do_inicio():
     estado = inventario.estado_em(camera, date(2026, 11, 21), hoje=date(2026, 11, 18))
 
     assert estado == "indisponível"
+
+def test_docente_reserva_item_disponivel_e_fica_indisponivel():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+
+    inventario.reservar(
+        camera, date(2026, 11, 20), date(2026, 11, 22),
+        perfil="docente", hoje=date(2026, 11, 10),
+    )
+
+    assert inventario.estado_em(camera, date(2026, 11, 21)) == "indisponível"
