@@ -221,7 +221,7 @@ def test_consultar_equipamento_numa_data_mostra_estado_de_cada_item():
         ("Tripé grande", "disponível"),
     ]
 
-def test_item_em_manutencao_aparece_indisponivel_na_consulta_por_data():
+def test_item_em_manutencao_aparece_indisponivel_na_consulta_por_data(): 
     inventario = Inventario()
     camera = Item("Câmera Kodak", "câmera", em_manutencao=True)
     inventario.registrar(camera)
@@ -231,3 +231,4 @@ def test_item_em_manutencao_aparece_indisponivel_na_consulta_por_data():
     assert [(item.nome, estado) for item, estado in estados] == [
         ("Câmera Kodak", "indisponível"),
     ]
+

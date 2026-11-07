@@ -90,6 +90,8 @@ class Inventario:
         return devolucao
 
     def estado_em(self, item, data, hoje=None):
+        if item.em_manutencao:
+            return "indisponível"
         for reserva in self.reservas:
             if item in reserva.item.itens and reserva.inicio <= data <= reserva.fim:
                 if reserva.perfil == "docente":
