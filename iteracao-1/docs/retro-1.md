@@ -4,7 +4,8 @@
 -
 
 ## O que correu mal ou mudaria
--
+
+No H04, o estado_em não olhava para a manutenção. Um item em manutenção sem reservas aparece como “disponível” nesta consulta, e o glossário diz que deve ser “indisponível”, então acrescentei isso no H04.
 
 ## Uma ação concreta para a iteração 2
 
