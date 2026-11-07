@@ -166,3 +166,18 @@ def test_docente_reserva_item_em_espera_ate_48_horas_antes():
 
     assert inventario.estado_em(camera, date(2026, 11, 21)) == "indisponível"
     assert [r.perfil for r in inventario.reservas] == ["docente"]
+
+
+def test_docente_nao_pode_reservar_item_em_espera_a_menos_de_48_horas():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+    inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
+
+    with pytest.raises(ReservaRecusada):
+        inventario.reservar(
+            camera, date(2026, 11, 20), date(2026, 11, 22),
+            perfil="docente", hoje=date(2026, 11, 19),
+        )
+
+    assert [r.perfil for r in inventario.reservas] == ["estudante"]
