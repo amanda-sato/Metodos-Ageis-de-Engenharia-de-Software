@@ -152,3 +152,17 @@ def test_item_em_espera_nao_pode_ser_reservado_por_outro_estudante():
         inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
 
     assert len(inventario.reservas) == 1
+
+def test_docente_reserva_item_em_espera_ate_48_horas_antes():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+    inventario.reservar(camera, date(2026, 11, 20), date(2026, 11, 22), perfil="estudante")
+
+    inventario.reservar(
+        camera, date(2026, 11, 20), date(2026, 11, 22),
+        perfil="docente", hoje=date(2026, 11, 17),
+    )
+
+    assert inventario.estado_em(camera, date(2026, 11, 21)) == "indisponível"
+    assert [r.perfil for r in inventario.reservas] == ["docente"]
