@@ -72,12 +72,15 @@ class Inventario:
         self.reservas.append(reserva)
         return reserva
 
+    def faltam_mais_de_48_horas(self, reserva, hoje):
+        return (reserva.inicio - hoje).days > 2
+
     def docente_pode_passar_a_frente(self, existente, perfil, hoje):
         return (
             perfil == "docente"
             and existente.perfil == "estudante"
             and hoje is not None
-            and (existente.inicio - hoje).days > 2
+            and self.faltam_mais_de_48_horas(existente, hoje)
         )
 
     def dia_de_devolucao(self, fim):
@@ -90,6 +93,8 @@ class Inventario:
         for reserva in self.reservas:
             if item in reserva.item.itens and reserva.inicio <= data <= reserva.fim:
                 if reserva.perfil == "docente":
+                    return "indisponível"
+                if hoje is not None and not self.faltam_mais_de_48_horas(reserva, hoje):
                     return "indisponível"
                 return "em espera"
         return "disponível"
