@@ -19,7 +19,7 @@ class TennisGame1:
         elif self.p1points >= 4 or self.p2points >= 4:
             return self._end_game_score()
         else:
-            return self.SCORE_NAMES[self.p1points] + "-" + self.SCORE_NAMES[self.p2points]
+            return self._running_score()
 
     def _tie_score(self):
         if self.p1points >= 3:
@@ -37,3 +37,6 @@ class TennisGame1:
             return "Win for " + self.player1_name
         else:
             return "Win for " + self.player2_name
+
+    def _running_score(self):
+        return self.SCORE_NAMES[self.p1points] + "-" + self.SCORE_NAMES[self.p2points]
