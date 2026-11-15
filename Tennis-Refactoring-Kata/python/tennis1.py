@@ -15,10 +15,7 @@ class TennisGame1:
 
     def score(self):
         if self.p1points == self.p2points:
-            if self.p1points >= 3:
-                return "Deuce"
-            else:
-                return self.SCORE_NAMES[self.p1points] + "-All"
+            return self._tie_score()
         elif self.p1points >= 4 or self.p2points >= 4:
             minus_result = self.p1points - self.p2points
             if minus_result == 1:
@@ -31,3 +28,9 @@ class TennisGame1:
                 return "Win for " + self.player2_name
         else:
             return self.SCORE_NAMES[self.p1points] + "-" + self.SCORE_NAMES[self.p2points]
+
+    def _tie_score(self):
+        if self.p1points >= 3:
+            return "Deuce"
+        else:
+            return self.SCORE_NAMES[self.p1points] + "-All"
