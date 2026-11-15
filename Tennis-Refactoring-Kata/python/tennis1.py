@@ -30,16 +30,9 @@ class TennisGame1:
             else:
                 result = "Win for " + self.player2_name
         else:
-            for i in range(1, 3):
-                if i == 1:
-                    temp_score = self.p1points
-                else:
-                    result += "-"
-                    temp_score = self.p2points
-                result += {
-                    0: "Love",
-                    1: "Fifteen",
-                    2: "Thirty",
-                    3: "Forty",
-                }[temp_score]
+            temp_score = self.p1points
+            result += {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}[temp_score]
+            result += "-"
+            temp_score = self.p2points
+            result += {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}[temp_score]
         return result
