@@ -30,7 +30,9 @@ class TennisGame1:
             else:
                 result = "Win for " + self.player2_name
         else:
-            result += {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}[self.p1points]
-            result += "-"
-            result += {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}[self.p2points]
+            result = (
+                {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}[self.p1points]
+                + "-"
+                + {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}[self.p2points]
+            )
         return result
