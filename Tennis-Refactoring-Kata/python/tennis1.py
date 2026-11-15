@@ -17,15 +17,7 @@ class TennisGame1:
         if self.p1points == self.p2points:
             return self._tie_score()
         elif self.p1points >= 4 or self.p2points >= 4:
-            minus_result = self.p1points - self.p2points
-            if minus_result == 1:
-                return "Advantage " + self.player1_name
-            elif minus_result == -1:
-                return "Advantage " + self.player2_name
-            elif minus_result >= 2:
-                return "Win for " + self.player1_name
-            else:
-                return "Win for " + self.player2_name
+            return self._end_game_score()
         else:
             return self.SCORE_NAMES[self.p1points] + "-" + self.SCORE_NAMES[self.p2points]
 
@@ -34,3 +26,14 @@ class TennisGame1:
             return "Deuce"
         else:
             return self.SCORE_NAMES[self.p1points] + "-All"
+
+    def _end_game_score(self):
+        minus_result = self.p1points - self.p2points
+        if minus_result == 1:
+            return "Advantage " + self.player1_name
+        elif minus_result == -1:
+            return "Advantage " + self.player2_name
+        elif minus_result >= 2:
+            return "Win for " + self.player1_name
+        else:
+            return "Win for " + self.player2_name
