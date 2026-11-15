@@ -16,19 +16,18 @@ class TennisGame1:
     def score(self):
         if self.p1points == self.p2points:
             if self.p1points >= 3:
-                result = "Deuce"
+                return "Deuce"
             else:
-                result = self.SCORE_NAMES[self.p1points] + "-All"
+                return self.SCORE_NAMES[self.p1points] + "-All"
         elif self.p1points >= 4 or self.p2points >= 4:
             minus_result = self.p1points - self.p2points
             if minus_result == 1:
-                result = "Advantage " + self.player1_name
+                return "Advantage " + self.player1_name
             elif minus_result == -1:
-                result = "Advantage " + self.player2_name
+                return "Advantage " + self.player2_name
             elif minus_result >= 2:
-                result = "Win for " + self.player1_name
+                return "Win for " + self.player1_name
             else:
-                result = "Win for " + self.player2_name
+                return "Win for " + self.player2_name
         else:
-            result = self.SCORE_NAMES[self.p1points] + "-" + self.SCORE_NAMES[self.p2points]
-        return result
+            return self.SCORE_NAMES[self.p1points] + "-" + self.SCORE_NAMES[self.p2points]
