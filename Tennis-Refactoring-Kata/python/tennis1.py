@@ -1,4 +1,6 @@
 class TennisGame1:
+    SCORE_NAMES = {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}
+
     def __init__(self, player1_name, player2_name):
         self.player1_name = player1_name
         self.player2_name = player2_name
@@ -13,11 +15,10 @@ class TennisGame1:
 
     def score(self):
         if self.p1points == self.p2points:
-            result = {
-                0: "Love-All",
-                1: "Fifteen-All",
-                2: "Thirty-All",
-            }.get(self.p1points, "Deuce")
+            if self.p1points >= 3:
+                result = "Deuce"
+            else:
+                result = self.SCORE_NAMES[self.p1points] + "-All"
         elif self.p1points >= 4 or self.p2points >= 4:
             minus_result = self.p1points - self.p2points
             if minus_result == 1:
@@ -29,9 +30,5 @@ class TennisGame1:
             else:
                 result = "Win for " + self.player2_name
         else:
-            result = (
-                {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}[self.p1points]
-                + "-"
-                + {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}[self.p2points]
-            )
+            result = self.SCORE_NAMES[self.p1points] + "-" + self.SCORE_NAMES[self.p2points]
         return result
