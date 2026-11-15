@@ -23,13 +23,13 @@ class TennisGame1:
         elif self.p1points >= 4 or self.p2points >= 4:
             minus_result = self.p1points - self.p2points
             if minus_result == 1:
-                result = "Advantage player1"
+                result = "Advantage " + self.player1_name
             elif minus_result == -1:
-                result = "Advantage player2"
+                result = "Advantage " + self.player2_name
             elif minus_result >= 2:
-                result = "Win for player1"
+                result = "Win for " + self.player1_name
             else:
-                result = "Win for player2"
+                result = "Win for " + self.player2_name
         else:
             for i in range(1, 3):
                 if i == 1:
