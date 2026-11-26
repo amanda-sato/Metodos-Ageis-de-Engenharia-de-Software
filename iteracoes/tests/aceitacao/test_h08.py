@@ -1,0 +1,16 @@
+from datetime import date
+from equipamentos import Inventario, Item
+
+
+def test_emprestimo_com_devolucao_20_quando_chega_dia_19_entao_alerta_termina_amanha():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+    reserva = inventario.reservar(camera, date(2026, 11, 15), date(2026, 11, 20))
+    inventario.levantar(reserva)
+
+    alertas = inventario.alertas_em(hoje=date(2026, 11, 19))
+
+    assert [(a.item.nome, a.mensagem) for a in alertas] == [
+        ("Câmera Digital", "O prazo termina amanhã."),
+    ]

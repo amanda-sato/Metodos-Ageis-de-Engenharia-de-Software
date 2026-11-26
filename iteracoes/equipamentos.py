@@ -47,6 +47,12 @@ class ResultadoEmprestimo:
         self.situacao = situacao
 
 
+class Alerta:
+    def __init__(self, item, mensagem):
+        self.item = item
+        self.mensagem = mensagem
+
+
 class Inventario:
     def __init__(self, feriados=None):
         self.itens = []
@@ -133,6 +139,9 @@ class Inventario:
             for reserva in self.reservas
             if reserva.levantada
         ]
+
+    def alertas_em(self, hoje):
+        return []
 
     def consultar_lista(self):
         if not self.itens:
