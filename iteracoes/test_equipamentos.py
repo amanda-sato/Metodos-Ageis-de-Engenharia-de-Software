@@ -278,3 +278,16 @@ def test_situacao_com_um_dia_restante_usa_a_palavra_no_singular():
     )
 
     assert reserva.situacao_em(date(2026, 11, 19)) == "falta 1 dia"
+
+
+def test_emprestimo_devolvido_nao_aparece_na_consulta_de_emprestimos():
+    inventario = Inventario()
+    camera = Item("Câmera Digital", "câmera")
+    inventario.registrar(camera)
+    reserva = inventario.reservar(camera, date(2026, 11, 15), date(2026, 11, 20))
+    inventario.levantar(reserva)
+    inventario.devolver(reserva)
+
+    emprestimos = inventario.consultar_emprestimos(hoje=date(2026, 11, 18))
+
+    assert emprestimos == []
