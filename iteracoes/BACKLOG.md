@@ -199,7 +199,7 @@ do fim do prazo de um empréstimo, **para** ter conhecimento dos prazos.
 prazo fiquem bloqueados, **para** evitar que façam novos empréstimos sem terem devolvido os
 itens anteriores.
 
-- **Pontos:** 3 · **Prioridade:** 2 · **Iteração:** 2 · **Estado:** por fazer
+- **Pontos:** 3 · **Prioridade:** 2 · **Iteração:** 2 · **Estado:** pronto
 
 **Critérios de aceitação**
 
