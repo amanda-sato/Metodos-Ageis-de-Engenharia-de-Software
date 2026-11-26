@@ -118,6 +118,12 @@ class Inventario:
             for tipo in composicao
         )
 
+    def levantar(self, reserva):
+        pass
+
+    def consultar_emprestimos(self, hoje):
+        return []
+
     def consultar_lista(self):
         if not self.itens:
             return ResultadoBuscaLista([], "Não há equipamentos registrados.")
