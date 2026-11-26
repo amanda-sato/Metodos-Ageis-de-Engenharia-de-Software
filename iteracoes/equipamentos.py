@@ -143,8 +143,13 @@ class Inventario:
     def alertas_em(self, hoje):
         alertas = []
         for reserva in self.reservas:
-            if reserva.levantada and (reserva.devolucao - hoje).days == 1:
+            if not reserva.levantada:
+                continue
+            dias = (reserva.devolucao - hoje).days
+            if dias == 1:
                 alertas.append(Alerta(reserva.item, "O prazo termina amanhã."))
+            elif dias == 0:
+                alertas.append(Alerta(reserva.item, "O prazo termina hoje."))
         return alertas
 
     def consultar_lista(self):
