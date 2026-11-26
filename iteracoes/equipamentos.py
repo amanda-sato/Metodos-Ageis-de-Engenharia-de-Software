@@ -145,7 +145,7 @@ class Inventario:
         for reserva in self.reservas:
             if not reserva.levantada:
                 continue
-            dias = (reserva.devolucao - hoje).days
+            dias = reserva.dias_ate_devolucao(hoje)
             if dias == 1:
                 alertas.append(Alerta(reserva.item, "O prazo termina amanhã."))
             elif dias == 0:
@@ -167,8 +167,11 @@ class Reserva:
         self.perfil = perfil
         self.levantada = False
 
+    def dias_ate_devolucao(self, hoje):
+        return (self.devolucao - hoje).days
+
     def situacao_em(self, hoje):
-        dias = (self.devolucao - hoje).days
+        dias = self.dias_ate_devolucao(hoje)
         if dias < 0:
             return "em atraso"
         if dias == 0:
