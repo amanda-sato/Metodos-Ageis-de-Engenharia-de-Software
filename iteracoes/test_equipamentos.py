@@ -1,6 +1,6 @@
 from datetime import date
 import pytest
-from equipamentos import Inventario, Item, ReservaRecusada, Kit
+from equipamentos import Inventario, Item, ReservaRecusada, Kit, Reserva
 
 #H01
 
@@ -269,3 +269,12 @@ def test_sem_microfone_disponivel_nao_e_possivel_formar_kits():
     kits = inventario.kits_possiveis_em(date(2026, 11, 21), ["câmera", "tripé", "microfone"])
 
     assert kits == 0
+
+def test_situacao_com_um_dia_restante_usa_a_palavra_no_singular():
+    reserva = Reserva(
+        Item("Câmera Digital", "câmera"),
+        date(2026, 11, 15), date(2026, 11, 20),
+        devolucao=date(2026, 11, 20), perfil="estudante",
+    )
+
+    assert reserva.situacao_em(date(2026, 11, 19)) == "falta 1 dia"

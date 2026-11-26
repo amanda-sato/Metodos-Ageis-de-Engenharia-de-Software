@@ -147,7 +147,7 @@ seja de sete dias corridos e que, se terminar num feriado, passe para o dia úti
 **Como** responsável pelo laboratório multimédia, **quero** saber quanto tempo falta até ao fim
 do empréstimo de cada item, **para** planear os próximos empréstimos e antecipar atrasos.
 
-- **Pontos:** 2 · **Prioridade:** 2 · **Iteração:** 2 · **Estado:** por fazer
+- **Pontos:** 2 · **Prioridade:** 2 · **Iteração:** 2 · **Estado:** Pronto
 
 **Critérios de aceitação**
 
