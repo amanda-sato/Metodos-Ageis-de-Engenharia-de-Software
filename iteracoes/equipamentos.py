@@ -151,6 +151,8 @@ class Reserva:
 
     def situacao_em(self, hoje):
         dias = (self.devolucao - hoje).days
+        if dias < 0:
+            return "em atraso"
         if dias == 0:
             return "termina hoje"
         return f"faltam {dias} dias"
