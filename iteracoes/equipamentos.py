@@ -62,7 +62,7 @@ class Inventario:
     def registrar(self, item):
         self.itens.append(item)
 
-    def reservar(self, item, inicio, fim, perfil="estudante", hoje=None):
+    def reservar(self, item, inicio, fim, perfil="estudante", hoje=None, utilizador=None):
         if item.em_manutencao:
             raise ReservaRecusada("O item está em manutenção.")
         if (fim - inicio).days > 7:
@@ -81,7 +81,7 @@ class Inventario:
                 )
         for cancelada in canceladas:
             self.reservas.remove(cancelada)
-        reserva = Reserva(item, inicio, fim, self.dia_de_devolucao(fim), perfil)
+        reserva = Reserva(item, inicio, fim, self.dia_de_devolucao(fim), perfil, utilizador)
         self.reservas.append(reserva)
         return reserva
 
@@ -162,12 +162,13 @@ class Inventario:
 
 
 class Reserva:
-    def __init__(self, item, inicio, fim, devolucao, perfil):
+    def __init__(self, item, inicio, fim, devolucao, perfil, utilizador=None):
         self.item = item
         self.inicio = inicio
         self.fim = fim
         self.devolucao = devolucao
         self.perfil = perfil
+        self.utilizador = utilizador
         self.levantada = False
         self.devolvida = False
 

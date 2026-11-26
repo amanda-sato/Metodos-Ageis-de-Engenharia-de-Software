@@ -183,7 +183,7 @@ que não haja conflitos de empréstimo de equipamento.
 **Como** responsável pelo laboratório multimédia, **quero** ser alertada um dia antes e no dia
 do fim do prazo de um empréstimo, **para** ter conhecimento dos prazos.
 
-- **Pontos:** 3 · **Prioridade:** 2 · **Iteração:** 2 · **Estado:** por fazer
+- **Pontos:** 3 · **Prioridade:** 2 · **Iteração:** 2 · **Estado:** pronto
 
 **Critérios de aceitação**
 
