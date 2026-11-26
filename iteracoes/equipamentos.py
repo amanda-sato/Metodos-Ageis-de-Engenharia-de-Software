@@ -128,12 +128,11 @@ class Inventario:
         reserva.levantada = True
 
     def consultar_emprestimos(self, hoje):
-        resultado = []
-        for reserva in self.reservas:
-            if reserva.levantada:
-                dias = (reserva.devolucao - hoje).days
-                resultado.append(ResultadoEmprestimo(reserva.item, f"faltam {dias} dias"))
-        return resultado
+        return [
+            ResultadoEmprestimo(reserva.item, reserva.situacao_em(hoje))
+            for reserva in self.reservas
+            if reserva.levantada
+        ]
 
     def consultar_lista(self):
         if not self.itens:
@@ -149,3 +148,9 @@ class Reserva:
         self.devolucao = devolucao
         self.perfil = perfil
         self.levantada = False
+
+    def situacao_em(self, hoje):
+        dias = (self.devolucao - hoje).days
+        if dias == 0:
+            return "termina hoje"
+        return f"faltam {dias} dias"
