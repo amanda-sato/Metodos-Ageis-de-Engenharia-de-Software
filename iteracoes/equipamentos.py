@@ -155,4 +155,6 @@ class Reserva:
             return "em atraso"
         if dias == 0:
             return "termina hoje"
+        if dias == 1:
+            return "falta 1 dia"
         return f"faltam {dias} dias"
