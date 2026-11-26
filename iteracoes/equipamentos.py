@@ -41,6 +41,12 @@ class ResultadoBuscaLista:
         self.mensagem = mensagem
 
 
+class ResultadoEmprestimo:
+    def __init__(self, item, situacao):
+        self.item = item
+        self.situacao = situacao
+
+
 class Inventario:
     def __init__(self, feriados=None):
         self.itens = []
@@ -119,10 +125,15 @@ class Inventario:
         )
 
     def levantar(self, reserva):
-        pass
+        reserva.levantada = True
 
     def consultar_emprestimos(self, hoje):
-        return []
+        resultado = []
+        for reserva in self.reservas:
+            if reserva.levantada:
+                dias = (reserva.devolucao - hoje).days
+                resultado.append(ResultadoEmprestimo(reserva.item, f"faltam {dias} dias"))
+        return resultado
 
     def consultar_lista(self):
         if not self.itens:
@@ -137,3 +148,4 @@ class Reserva:
         self.fim = fim
         self.devolucao = devolucao
         self.perfil = perfil
+        self.levantada = False
