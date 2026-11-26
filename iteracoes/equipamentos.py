@@ -140,7 +140,7 @@ class Inventario:
         return [
             ResultadoEmprestimo(reserva.item, reserva.situacao_em(hoje))
             for reserva in self.reservas
-            if reserva.levantada
+            if reserva.levantada and not reserva.devolvida
         ]
 
     def alertas_em(self, hoje):
