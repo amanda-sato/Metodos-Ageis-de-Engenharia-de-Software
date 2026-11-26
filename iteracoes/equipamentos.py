@@ -133,6 +133,9 @@ class Inventario:
     def levantar(self, reserva):
         reserva.levantada = True
 
+    def devolver(self, reserva):
+        pass
+
     def consultar_emprestimos(self, hoje):
         return [
             ResultadoEmprestimo(reserva.item, reserva.situacao_em(hoje))
