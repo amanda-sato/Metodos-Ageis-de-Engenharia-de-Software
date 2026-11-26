@@ -1,13 +1,11 @@
 # Backlog do produto
 
-> Modelo para o Projeto Prático (M1). Substituam o texto entre parênteses retos e apaguem
-> estas linhas de instruções antes da primeira entrega. Este ficheiro vive no repositório e é
-> atualizado em cada iteração — é o contrato com a cliente.
+
 
 **Produto:** ReservaLab — Gestão de Equipamento do Laboratório Multimédia
 **Equipa:** Amanda Reiko de Oliveira Sato
 **Cliente:** Célia Soares
-**Última atualização:** 02 Nov 2026
+**Última atualização:** 26 Nov 2026
 
 ---
 
@@ -53,7 +51,7 @@ Acordada na aula 3. Uma história só está pronta quando:
 | Iteração | Período | Pontos planeados | Pontos concluídos | Notas |
 |---|---|---|---|---|
 | 1 | 12 out – 2 nov | 26 | | H01, H02, H03, H04, H05, H07 — saber o que existe e reservar sem conflitos |
-| 2 | 2 nov – 16 nov | 8 | | H06, H08, H09 — prazos, alertas e bloqueios |
+| 2 | 24 nov – 30 nov | 8 | | H06, H08, H09 — prazos, alertas e bloqueios |
 | 3 | 16 nov – 11 jan | 5 | | H10 — estatísticas de uso |
 
 ---
