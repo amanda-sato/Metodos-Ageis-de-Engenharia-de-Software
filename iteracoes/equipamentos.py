@@ -140,13 +140,13 @@ class Inventario:
         return [
             ResultadoEmprestimo(reserva.item, reserva.situacao_em(hoje))
             for reserva in self.reservas
-            if reserva.levantada and not reserva.devolvida
+            if reserva.em_emprestimo
         ]
 
     def alertas_em(self, hoje):
         alertas = []
         for reserva in self.reservas:
-            if not reserva.levantada or reserva.devolvida:
+            if not reserva.em_emprestimo:
                 continue
             dias = reserva.dias_ate_devolucao(hoje)
             if dias == 1:
@@ -170,6 +170,10 @@ class Reserva:
         self.perfil = perfil
         self.levantada = False
         self.devolvida = False
+
+    @property
+    def em_emprestimo(self):
+        return self.levantada and not self.devolvida
 
     def dias_ate_devolucao(self, hoje):
         return (self.devolucao - hoje).days
