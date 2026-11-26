@@ -63,15 +63,7 @@ class Inventario:
         self.itens.append(item)
 
     def reservar(self, item, inicio, fim, perfil="estudante", hoje=None, utilizador=None):
-        if utilizador is not None and hoje is not None:
-            em_atraso = [
-                r.item.nome for r in self.reservas
-                if r.utilizador == utilizador and r.em_atraso(hoje)
-            ]
-            if em_atraso:
-                raise ReservaRecusada(
-                    f"Tem material em atraso: {', '.join(em_atraso)}."
-                )
+        self.verificar_bloqueio(utilizador, hoje)
         if item.em_manutencao:
             raise ReservaRecusada("O item está em manutenção.")
         if (fim - inicio).days > 7:
@@ -93,6 +85,16 @@ class Inventario:
         reserva = Reserva(item, inicio, fim, self.dia_de_devolucao(fim), perfil, utilizador)
         self.reservas.append(reserva)
         return reserva
+
+    def verificar_bloqueio(self, utilizador, hoje):
+        if utilizador is None or hoje is None:
+            return
+        em_atraso = [
+            reserva.item.nome for reserva in self.reservas
+            if reserva.utilizador == utilizador and reserva.em_atraso(hoje)
+        ]
+        if em_atraso:
+            raise ReservaRecusada(f"Tem material em atraso: {', '.join(em_atraso)}.")
 
     def faltam_mais_de_48_horas(self, reserva, hoje):
         return (reserva.inicio - hoje).days > 2
