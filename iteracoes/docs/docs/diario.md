@@ -4,5 +4,5 @@
 - Feito: 
   - plano do sprint e atualização do backlog com a velocidade da iteração 1.
   - H06 com testes de aceitação e TDD.
-- Planejamento do dia: 
+- Planejamento do dia: H08 com testes de aceitação e TDD.
 - Bloqueios: nenhum
