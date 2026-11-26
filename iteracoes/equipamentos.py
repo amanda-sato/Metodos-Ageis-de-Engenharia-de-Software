@@ -134,7 +134,7 @@ class Inventario:
         reserva.levantada = True
 
     def devolver(self, reserva):
-        pass
+        reserva.devolvida = True
 
     def consultar_emprestimos(self, hoje):
         return [
@@ -146,7 +146,7 @@ class Inventario:
     def alertas_em(self, hoje):
         alertas = []
         for reserva in self.reservas:
-            if not reserva.levantada:
+            if not reserva.levantada or reserva.devolvida:
                 continue
             dias = reserva.dias_ate_devolucao(hoje)
             if dias == 1:
@@ -169,6 +169,7 @@ class Reserva:
         self.devolucao = devolucao
         self.perfil = perfil
         self.levantada = False
+        self.devolvida = False
 
     def dias_ate_devolucao(self, hoje):
         return (self.devolucao - hoje).days
