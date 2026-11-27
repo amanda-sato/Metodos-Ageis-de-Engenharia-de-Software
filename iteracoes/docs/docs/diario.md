@@ -10,4 +10,8 @@
 - Bloqueios: nenhum
   
 ## 2026-11-27
-- Verificar se algo falta.
+- Feito: 
+  - 
+- Planejamento do dia: Verificar se algo falta.
+  
+- Bloqueios: nenhum
