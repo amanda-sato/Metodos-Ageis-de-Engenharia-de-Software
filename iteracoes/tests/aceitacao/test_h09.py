@@ -3,7 +3,7 @@ import pytest
 from equipamentos import Inventario, Item, ReservaRecusada
 
 
-def test_utilizador_com_item_em_atraso_quando_tenta_reservar_recusa_indicando_o_item():
+def test_dado_utilizador_com_item_em_atraso_quando_tenta_reservar_entao_recusa_indicando_o_item():
     inventario = Inventario()
     camera = Item("Câmera Digital", "câmera")
     tripe = Item("Tripé grande", "tripé")
@@ -22,7 +22,8 @@ def test_utilizador_com_item_em_atraso_quando_tenta_reservar_recusa_indicando_o_
 
     assert len(inventario.reservas) == 1
 
-def test_utilizador_bloqueado_quando_o_item_em_atraso_e_devolvido_e_volta_a_poder_reservar():
+
+def test_dado_utilizador_bloqueado_quando_devolve_o_item_em_atraso_entao_volta_a_poder_reservar():
     inventario = Inventario()
     camera = Item("Câmera Digital", "câmera")
     tripe = Item("Tripé grande", "tripé")
@@ -47,7 +48,7 @@ def test_utilizador_bloqueado_quando_o_item_em_atraso_e_devolvido_e_volta_a_pode
     assert len(inventario.reservas) == 2
 
 
-def test_utilizador_com_dois_itens_em_atraso_quando_devolve_so_um_continua_bloqueado():
+def test_dado_utilizador_com_dois_itens_em_atraso_quando_devolve_so_um_entao_continua_bloqueado():
     inventario = Inventario()
     camera = Item("Câmera Digital", "câmera")
     microfone = Item("Microfone 1", "microfone")

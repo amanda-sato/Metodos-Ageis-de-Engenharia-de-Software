@@ -16,7 +16,7 @@ def test_dado_item_com_devolucao_a_20_quando_consulto_a_17_entao_faltam_3_dias()
     ]
 
 
-def test_item_com_devolucao_hoje_quando_consulto_os_emprestimos():
+def test_dado_item_com_devolucao_a_20_quando_consulto_a_20_entao_termina_hoje():
     inventario = Inventario()
     camera = Item("Câmera Digital", "câmera")
     inventario.registrar(camera)
@@ -29,7 +29,8 @@ def test_item_com_devolucao_hoje_quando_consulto_os_emprestimos():
         ("Câmera Digital", "termina hoje"),
     ]
 
-def test_dado_item_com_prazo_expirado_quando_consulto_os_emprestimo():
+
+def test_dado_item_com_devolucao_a_20_quando_consulto_a_22_entao_esta_em_atraso():
     inventario = Inventario()
     camera = Item("Câmera Digital", "câmera")
     inventario.registrar(camera)

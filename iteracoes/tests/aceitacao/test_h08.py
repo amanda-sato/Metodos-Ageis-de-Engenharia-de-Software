@@ -2,7 +2,7 @@ from datetime import date
 from equipamentos import Inventario, Item
 
 
-def test_emprestimo_com_devolucao_20_quando_chega_dia_19_entao_alerta_termina_amanha():
+def test_dado_item_com_devolucao_a_20_quando_chega_dia_19_entao_alerta_termina_amanha():
     inventario = Inventario()
     camera = Item("Câmera Digital", "câmera")
     inventario.registrar(camera)
@@ -16,7 +16,7 @@ def test_emprestimo_com_devolucao_20_quando_chega_dia_19_entao_alerta_termina_am
     ]
 
 
-def test_emprestimo_com_devolucao_a_20_quando_chega_dia_20_alerta_termina_hoje():
+def test_dado_item_com_devolucao_a_20_quando_chega_dia_20_entao_alerta_termina_hoje():
     inventario = Inventario()
     camera = Item("Câmera Digital", "câmera")
     inventario.registrar(camera)
@@ -30,7 +30,7 @@ def test_emprestimo_com_devolucao_a_20_quando_chega_dia_20_alerta_termina_hoje()
     ]
 
 
-def test_dado_item_devolvido_antes_do_prazo_fim_do_prazo_sem_alerta():
+def test_dado_item_devolvido_antes_do_prazo_quando_chega_dia_20_entao_nao_ha_alertas():
     inventario = Inventario()
     camera = Item("Câmera Digital", "câmera")
     inventario.registrar(camera)
