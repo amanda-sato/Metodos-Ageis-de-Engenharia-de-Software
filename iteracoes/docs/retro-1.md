@@ -1,22 +1,24 @@
-# Retrospetiva da iteração 2
+# Retrospetiva da iteração 1
 
-## A ação da retrospetiva 1 foi aplicada? Como?
-- Sim. A ação era confirmar os termos do glossário antes de cada história e testar cada estado possível.
-  - Antes da H06, confirmei no glossário que um empréstimo só começa no levantamento e termina na devolução. Por isso criei o `levantar` e o `devolver`, em vez de tratar qualquer reserva como empréstimo.
-  - O mesmo glossário mostrou um erro que nenhum critério apanhava: empréstimos já devolvidos ainda apareciam na consulta. Escrevi um teste para isso e corrigi.
-  - Os termos "atraso" e "bloqueio" do glossário deram nome aos métodos `em_atraso` e `verificar_bloqueio`.
-  - Cada situação de um empréstimo tem o seu teste: faltam N dias, falta 1 dia, termina hoje, em atraso e devolvido.
+## O que correu bem
+- Os testes foram escritos a partir das regras do enunciado (reservas sobrepostas, devolução em feriado, regra das 48 horas para docentes, formação de kits), o que ajudou a detetar erros cedo.
+- As funções principais (`reservar`, `docente_pode_passar_a_frente`, `estado_em`) ficaram simples e com responsabilidades bem separadas.
+- O uso do Claude IA acelerou a escrita de testes e ajudou a lembrar casos-limite, desde que as sugestões fossem revistas antes de aceitar.
 
-## O que manter
-- TDD em passos pequenos: um teste vermelho de cada vez, o mínimo para ficar verde e só depois refatorizar.
-- Um teste de aceitação por critério, com o nome no formato Dado / Quando / Então. Tornou fácil ver o que estava coberto.
-- Refatorizar logo que aparece repetição. Mover a lógica para a `Reserva` (`situacao_em`, `em_emprestimo`, `em_atraso`) fez com que a H09 saísse quase sem código novo.
-- Quando um teste passa à primeira, estragar o código de propósito para confirmar que o teste consegue falhar.
 
-## O que mudar
-- O plano do sprint e o diário começaram tarde, quando o sprint já ia avançado. O diário perde valor como evidência se não for escrito dia a dia.
-- Perdi tempo com o ambiente: duas versões do Python instaladas, o pytest só numa delas, e a mudança do nome da pasta. Devia ter confirmado o ambiente antes de começar a programar.
-- As questões em aberto (Q1 a Q7) continuam sem resposta da cliente. Fiz o código à volta delas, mas devia tê-las enviado mais cedo.
+## O que correu mal ou mudaria
 
-## Uma ação concreta para a iteração 3 (Kanban)
-- No primeiro dia da iteração 3, enviar à cliente todas as questões em aberto (Q1 a Q7) e só puxar a H10 para "em curso" depois de a Q3 (durante quanto tempo se guarda o histórico) estar respondida.
+- No H04, o estado_em não olhava para a manutenção. Um item em manutenção sem reservas aparece como “disponível” nesta consulta, e o glossário diz que deve ser “indisponível”, então acrescentei isso no H04.
+
+## Uma ação concreta para a iteração 2
+- Antes de implementar cada história, confirmar os termos usados no glossário (ex.: "disponível", "indisponível", "em espera") e escrever pelo menos um teste para cada estado possível do item, incluindo a manutenção.
+
+
+
+Questões para o cliente:
+
+H07 - 
+Q2: um estudante pode ceder a reserva a outro?
+Q5: quando um docente fica com o item, o estudante deve ser avisado?
+
+
